@@ -1,0 +1,41 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,hmargin=0.79in,vmargin=0.6in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm,lmodern,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{proposition}{Proposition}
+\title{Reflection constraints for symmetric Boolean degree}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\vspace{-2.4em}
+The von zur Gathen--Roche conjecture asserts that a nonconstant Boolean profile on weights $0,\ldots,n$ has a real interpolating polynomial of degree at least $n-3$ \cite{original}. Call $n-d$ the deficit when the polynomial has degree $d$. A reflection of a profile is allowed either to preserve all its bits or to complement all of them.
+
+\begin{proposition}
+If a nonconstant profile of length $n+1$ has deficit at least four, its length-$n$ prefix and suffix both have deficit at least three, and at least one has neither reflection symmetry. In a minimum-order counterexample both of these deficits are exactly three.
+\end{proposition}
+\begin{proof}
+Let $F$ interpolate the profile and put $S=2F-1$. Each window contains more than $d$ points and therefore has interpolating degree $d$. If both windows have reflection symmetry, we have polynomial identities
+\[
+ S(x)=\epsilon S(n-1-x),\qquad S(x)=\eta S(n+1-x)
+\]
+with signs $\epsilon,\eta\in\{-1,1\}$. Each identity holds on the corresponding $n$ sample points. Composing them gives $S(x+2)=\epsilon\eta S(x)$. Comparing leading coefficients gives $\epsilon\eta=1$. A nonconstant polynomial has a nonzero finite difference at shift two, a contradiction. In a minimum-order counterexample the smaller windows must satisfy the conjecture, giving deficit exactly three in both.
+\end{proof}
+
+For a deficit-four witness the four sums $\sum_i(-1)^i\binom ni F(i)(n-2i)^j$ for $j=0,1,2,3$ vanish. This follows by changing the polynomial test basis to falling factorials $(n-i)_{\underline j}$, which gives the four highest Newton coefficients. If an annihilating sum is supported on five indices $t_i$, its signed weights are proportional to $1/A'(t_i)$ for $A(x)=\prod_i(x-t_i)$, by Lagrange interpolation. This also applies to five transitions using $F(x+1)-F(x)$, which preserves the deficit on the shortened row.
+
+If two pairs of the five positions are reflected about the same row midpoint, equal magnitudes of the reflected binomial weights force the fifth position to be the midpoint. On the row $2M$, write the offsets as $-b,-a,0,a,b$ for $0<a<b\le M$ and put $v_j=\binom{2M}{M+j}$. The common product $v_j|A'(M+j)|$ gives
+\[
+ b^2=\frac{2v_a a^2}{2v_a-v_0},\qquad 2v_b(b^2-a^2)=v_0 a^2.
+\]
+The first identity determines the only possible $b$ for each $a$ and requires $v_a>v_0/2$. The exact search through row $60{,}000$ recovers only the constant-profile control $(M,a,b)=(2,1,2)$.
+
+For odd $n$, a reflected four-one profile has deficit at least three exactly when its two left positions $i,j$ have opposite parity and equal values of $(n-2i)\binom ni$. Disjoint blocks with opposite cubic moments would give a deficit-four witness. The exact search through odd order $50{,}001$ recovers only the $110$ published square-family profiles. No two occur at the same order. The repository also records searches of six- and eight-one central supports and five-one central supports without a reflection assumption. The full conjecture remains open.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{original} J.~von zur Gathen and J.~Roche, Polynomials with two values, \emph{Combinatorica} 17 (1997), 345--362. \href{https://doi.org/10.1007/BF01215917}{doi:10.1007/BF01215917}.
+\bibitem{recent} X.~Sun and C.~Wang, Degree lower bounds for symmetric Boolean functions: breaking the prime-gap barrier. \href{https://arxiv.org/abs/2611.26446}{arXiv:2611.26446}.
+\end{thebibliography}
+\end{document}
